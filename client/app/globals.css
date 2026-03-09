@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --background: 226 23% 9%;
+        /* #13151A */
+        --foreground: 210 40% 98%;
+        --card: 226 15% 13%;
+        /* #1C1F26 */
+        --card-foreground: 210 40% 98%;
+        --popover: 226 15% 13%;
+        --popover-foreground: 210 40% 98%;
+        --primary: 265 65% 58%;
+        /* Neon Purple #9D4EDD or similar */
+        --primary-foreground: 222 47.4% 11.2%;
+        --secondary: 226 15% 20%;
+        --secondary-foreground: 210 40% 98%;
+        --muted: 226 15% 20%;
+        --muted-foreground: 215 20.2% 65.1%;
+        --accent: 226 77% 60%;
+        /* Neon Blue #4361EE */
+        --accent-foreground: 210 40% 98%;
+        --destructive: 0 62.8% 30.6%;
+        --destructive-foreground: 210 40% 98%;
+        --border: 226 15% 20%;
+        /* Soft border */
+        --input: 226 15% 20%;
+        --ring: 265 65% 58%;
+        --radius: 1rem;
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+
+    body {
+        @apply bg-[#13151A] text-foreground font-sans antialiased;
+        background-image:
+            radial-gradient(ellipse at top left, rgba(67, 97, 238, 0.05), transparent 50%),
+            radial-gradient(ellipse at bottom right, rgba(157, 78, 221, 0.05), transparent 50%);
+    }
+}
+
+@layer components {
+    .premium-card {
+        @apply bg-[#1C1F26] border border-white/5 rounded-2xl shadow-xl transition-all duration-300;
+    }
+
+    .premium-button {
+        @apply bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl px-6 py-3 font-semibold shadow-lg shadow-indigo-500/20 transition-all active:scale-95;
+    }
+
+    .input-executive {
+        @apply bg-[#13151A] border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-indigo-500/50 focus:ring-4 focus:ring-indigo-500/10 transition-all placeholder:text-zinc-500 text-white;
+    }
+
+    .glass-card {
+        @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl !important;
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37) !important;
+    }
+
+    .neon-card {
+        @apply bg-[#1C1F26] rounded-2xl border border-white/5 shadow-lg overflow-hidden;
+    }
+}
+
+.premium-gradient-indigo {
+    background: linear-gradient(135deg, #6366f1 0%, #4338ca 100%);
+}
+
+.premium-gradient-slate {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+}
+
+@keyframes border-pulse {
+    0% {
+        border-color: rgba(99, 102, 241, 0.2);
+    }
+
+    50% {
+        border-color: rgba(99, 102, 241, 0.7);
+    }
+
+    100% {
+        border-color: rgba(99, 102, 241, 0.2);
+    }
+}
+
+.border-animate {
+    animation: border-pulse 2s infinite ease-in-out;
+}

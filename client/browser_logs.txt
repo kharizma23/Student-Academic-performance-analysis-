@@ -1,0 +1,21 @@
+CONSOLE [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+CONSOLE [log] [HMR] connected
+FETCH STATUS 401: http://localhost:8000/student/todos
+CONSOLE [error] Failed to load resource: the server responded with a status of 401 (Unauthorized)
+FETCH STATUS 401: http://localhost:8000/student/profile
+CONSOLE [error] Failed to load resource: the server responded with a status of 401 (Unauthorized)
+FETCH STATUS 401: http://localhost:8000/student/study-plan
+CONSOLE [error] Failed to load resource: the server responded with a status of 401 (Unauthorized)
+CONSOLE [warning] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+CONSOLE [warning] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+Waiting for roadmap load...
+Attempting to click Start Task...
+No Start Task button found.
+Attempting to click Reschedule...
+No Reschedule button found.

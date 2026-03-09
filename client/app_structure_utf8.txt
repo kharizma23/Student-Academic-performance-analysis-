@@ -1,0 +1,232 @@
+﻿
+
+    Directory: C:\User
+    s\kharizma\Downloa
+    ds\StudentAcademic
+    Platform-main\Stud
+    entAcademicPlatfor
+    m-main\frontend\ap
+    p
+
+
+Mode     LastWriteTime
+----     -------------
+d-----    18-02-2026  
+              01:57 PM
+d-----    18-02-2026  
+              01:57 PM
+d-----    18-02-2026  
+              01:57 PM
+d-----    18-02-2026  
+              01:57 PM
+d-----    18-02-2026  
+              01:57 PM
+-a----    18-02-2026  
+              01:57 PM
+-a----    07-03-2026  
+              02:57 PM
+-a----    06-03-2026  
+              09:56 AM
+-a----    06-03-2026  
+              11:45 AM
+
+
+    Directory: C:\User
+    s\kharizma\Downloa
+    ds\StudentAcademic
+    Platform-main\Stud
+    entAcademicPlatfor
+    m-main\frontend\ap
+    p\admin
+
+
+Mode     LastWriteTime
+----     -------------
+d-----    18-02-2026  
+              01:57 PM
+d-----    18-02-2026  
+              01:57 PM
+-a----    08-03-2026  
+              08:38 PM
+
+
+    Directory: C:\User
+    s\kharizma\Downloa
+    ds\StudentAcademic
+    Platform-main\Stud
+    entAcademicPlatfor
+    m-main\frontend\ap
+    p\admin\staff
+
+
+Mode     LastWriteTime
+----     -------------
+d-----    18-02-2026  
+              01:57 PM
+d-----    18-02-2026  
+              01:57 PM
+-a----    08-03-2026  
+              08:39 PM
+
+
+    Directory: C:\User
+    s\kharizma\Downloa
+    ds\StudentAcademic
+    Platform-main\Stud
+    entAcademicPlatfor
+    m-main\frontend\ap
+    p\admin\staff\add
+
+
+Mode     LastWriteTime
+----     -------------
+-a----    08-03-2026  
+              08:39 PM
+
+
+    Directory: C:\User
+    s\kharizma\Downloa
+    ds\StudentAcademic
+    Platform-main\Stud
+    entAcademicPlatfor
+    m-main\frontend\ap
+    p\admin\staff\[id]
+
+
+Mode     LastWriteTime
+----     -------------
+-a----    08-03-2026  
+              08:43 PM
+
+
+    Directory: C:\User
+    s\kharizma\Downloa
+    ds\StudentAcademic
+    Platform-main\Stud
+    entAcademicPlatfor
+    m-main\frontend\ap
+    p\admin\students
+
+
+Mode     LastWriteTime
+----     -------------
+d-----    18-02-2026  
+              01:57 PM
+d-----    18-02-2026  
+              01:57 PM
+-a----    08-03-2026  
+              08:39 PM
+
+
+    Directory: C:\User
+    s\kharizma\Downloa
+    ds\StudentAcademic
+    Platform-main\Stud
+    entAcademicPlatfor
+    m-main\frontend\ap
+    p\admin\students\a
+    dd
+
+
+Mode     LastWriteTime
+----     -------------
+-a----    08-03-2026  
+              08:39 PM
+
+
+    Directory: C:\User
+    s\kharizma\Downloa
+    ds\StudentAcademic
+    Platform-main\Stud
+    entAcademicPlatfor
+    m-main\frontend\ap
+    p\admin\students\[
+    id]
+
+
+Mode     LastWriteTime
+----     -------------
+-a----    08-03-2026  
+              08:39 PM
+
+
+    Directory: C:\User
+    s\kharizma\Downloa
+    ds\StudentAcademic
+    Platform-main\Stud
+    entAcademicPlatfor
+    m-main\frontend\ap
+    p\faculty
+
+
+Mode     LastWriteTime
+----     -------------
+-a----    08-03-2026  
+              09:31 PM
+
+
+    Directory: C:\User
+    s\kharizma\Downloa
+    ds\StudentAcademic
+    Platform-main\Stud
+    entAcademicPlatfor
+    m-main\frontend\ap
+    p\login
+
+
+Mode     LastWriteTime
+----     -------------
+-a----    08-03-2026  
+              10:36 PM
+
+
+    Directory: C:\User
+    s\kharizma\Downloa
+    ds\StudentAcademic
+    Platform-main\Stud
+    entAcademicPlatfor
+    m-main\frontend\ap
+    p\register
+
+
+Mode     LastWriteTime
+----     -------------
+-a----    08-03-2026  
+              08:38 PM
+
+
+    Directory: C:\User
+    s\kharizma\Downloa
+    ds\StudentAcademic
+    Platform-main\Stud
+    entAcademicPlatfor
+    m-main\frontend\ap
+    p\student
+
+
+Mode     LastWriteTime
+----     -------------
+d-----    18-02-2026  
+              01:57 PM
+-a----    06-03-2026  
+              09:53 PM
+-a----    08-03-2026  
+              09:39 PM
+
+
+    Directory: C:\User
+    s\kharizma\Downloa
+    ds\StudentAcademic
+    Platform-main\Stud
+    entAcademicPlatfor
+    m-main\frontend\ap
+    p\student\analytic
+    s
+
+
+Mode     LastWriteTime
+----     -------------
+-a----    25-02-2026  
+              02:40 PM
+
+
