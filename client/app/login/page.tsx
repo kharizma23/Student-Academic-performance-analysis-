@@ -345,42 +345,44 @@ function LoginContent() {
                 <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-blue-500/10 rounded-full blur-[120px]" />
             </div>
 
-            <div className="relative w-full max-w-3xl z-10">
+            <div className="relative w-full max-w-7xl z-10 px-8">
                 <AnimatePresence mode="wait">
                     {/* ── STEP 1: Credentials ── */}
                     {!show2FA && (
-                        <motion.div key="creds" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, y: -40 }} className="glass-card p-16 lg:p-24 shadow-[0_0_100px_rgba(79,70,229,0.15)]">
-                            <Link href="/" className="mb-16 block group">
-                                <div className="h-36 w-36 mx-auto bg-indigo-600 rounded-[2.5rem] flex items-center justify-center shadow-3xl shadow-indigo-500/50 group-hover:scale-110 transition-all duration-700 border-8 border-indigo-400/20">
-                                    <ShieldCheck className="h-20 w-20 text-white" />
+                        <motion.div key="creds" initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, y: -100 }} className="glass-card p-24 lg:p-40 shadow-[0_0_150px_rgba(79,70,229,0.2)] border-8 border-white/5">
+                            <Link href="/" className="mb-24 block group">
+                                <div className="h-56 w-56 mx-auto bg-indigo-600 rounded-[4rem] flex items-center justify-center shadow-4xl shadow-indigo-500/50 group-hover:scale-110 transition-all duration-1000 border-[12px] border-indigo-400/20">
+                                    <ShieldCheck className="h-32 w-32 text-white" />
                                 </div>
                             </Link>
-                            <div className="text-center mb-20">
-                                <h1 className="text-6xl lg:text-8xl font-black text-white tracking-tighter mb-6 uppercase leading-none">Access <span className="text-indigo-500">Node</span></h1>
-                                <div className="text-indigo-300/40 text-lg font-black uppercase tracking-[1em] flex items-center justify-center gap-6">
-                                    <div className="h-px w-16 bg-indigo-500/20" />{role}<div className="h-px w-16 bg-indigo-500/20" />
+                            <div className="text-center mb-24">
+                                <h1 className="text-8xl lg:text-[12rem] font-black text-white tracking-tighter mb-8 uppercase leading-none drop-shadow-2xl">
+                                    Access <span className="text-indigo-500">Node</span>
+                                </h1>
+                                <div className="text-indigo-300/30 text-2xl font-black uppercase tracking-[1.5em] flex items-center justify-center gap-12">
+                                    <div className="h-px w-32 bg-indigo-500/20" />{role}<div className="h-px w-32 bg-indigo-500/20" />
                                 </div>
                             </div>
-                            <form onSubmit={handleLogin} className="space-y-12">
+                            <form onSubmit={handleLogin} className="space-y-16">
                                 {error && (
                                     <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}
-                                        className="bg-rose-500/10 border-2 border-rose-500/30 p-8 rounded-3xl flex items-center gap-8 text-rose-200 font-black text-lg uppercase tracking-tight">
-                                        <Lock className="h-8 w-8 shrink-0 text-rose-500" />{error}
+                                        className="bg-rose-500/10 border-4 border-rose-500/30 p-12 rounded-[3rem] flex items-center gap-10 text-rose-200 font-black text-2xl uppercase tracking-tighter shadow-2xl shadow-rose-500/20">
+                                        <Lock className="h-12 w-12 shrink-0 text-rose-500" />{error}
                                     </motion.div>
                                 )}
-                                <div className="space-y-6">
-                                    <label className="text-lg font-black text-indigo-300/50 uppercase tracking-[0.4em] ml-2 flex items-center gap-4"><Mail className="h-5 w-5" /> Identity Endpoint</label>
-                                    <input type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="researcher@intel.ac.edu" className="input-executive w-full h-24 pl-10 text-2xl text-white font-black tracking-tight" required />
+                                <div className="space-y-8">
+                                    <label className="text-2xl font-black text-indigo-300/50 uppercase tracking-[0.5em] ml-4 flex items-center gap-6"><Mail className="h-8 w-8" /> Identity Endpoint</label>
+                                    <input type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="researcher@intel.ac.edu" className="bg-[#0c0e14] border-4 border-white/10 rounded-[2.5rem] w-full h-32 pl-12 text-4xl text-white font-black tracking-tighter focus:border-indigo-500/50 focus:ring-[20px] focus:ring-indigo-500/5 transition-all outline-none" required />
                                 </div>
-                                <div className="space-y-6">
-                                    <div className="flex items-center justify-between px-2">
-                                        <label className="text-lg font-black text-indigo-300/50 uppercase tracking-[0.4em] flex items-center gap-4"><Lock className="h-5 w-5" /> Secure Pin-Key</label>
-                                        <Link href="#" className="text-sm font-black text-indigo-400 hover:text-indigo-300 uppercase tracking-widest">Forgot Credentials?</Link>
+                                <div className="space-y-8">
+                                    <div className="flex items-center justify-between px-4">
+                                        <label className="text-2xl font-black text-indigo-300/50 uppercase tracking-[0.5em] flex items-center gap-6"><Lock className="h-8 w-8" /> Secure Pin-Key</label>
+                                        <Link href="#" className="text-lg font-black text-indigo-500 hover:text-indigo-400 uppercase tracking-widest">Credential Recovery?</Link>
                                     </div>
-                                    <input type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="••••••••" className="input-executive w-full h-24 pl-10 text-2xl text-white font-black tracking-tight" required />
+                                    <input type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="••••••••" className="bg-[#0c0e14] border-4 border-white/10 rounded-[2.5rem] w-full h-32 pl-12 text-4xl text-white font-black tracking-tighter focus:border-indigo-500/50 focus:ring-[20px] focus:ring-indigo-500/5 transition-all outline-none" required />
                                 </div>
-                                <Button type="submit" disabled={loading} className="premium-button w-full h-24 mt-16 flex items-center justify-center gap-6 text-2xl font-black tracking-[0.4em] uppercase group">
-                                    {loading ? <Loader2 className="h-10 w-10 animate-spin" /> : <><span>Sync Session</span><ArrowRight className="h-8 w-8 group-hover:translate-x-4 transition-transform duration-500" /></>}
+                                <Button type="submit" disabled={loading} className="bg-indigo-600 hover:bg-indigo-500 text-white rounded-[3rem] w-full h-40 mt-24 flex items-center justify-center gap-10 text-4xl font-black tracking-[0.6em] uppercase group shadow-[0_0_80px_rgba(79,70,229,0.4)] transition-all duration-500">
+                                    {loading ? <Loader2 className="h-16 w-16 animate-spin" /> : <><span>Sync Session</span><ArrowRight className="h-12 w-12 group-hover:translate-x-8 transition-transform duration-700" /></>}
                                 </Button>
                             </form>
                         </motion.div>
@@ -388,16 +390,16 @@ function LoginContent() {
 
                     {/* ── STEP 2A: Choose Method ── */}
                     {show2FA && !chosenMethod && (
-                        <motion.div key="chooser" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }} className="glass-card p-16 lg:p-24 space-y-12 shadow-[0_0_100px_rgba(79,70,229,0.15)]">
-                            <div className="text-center space-y-6">
-                                <div className="h-24 w-24 mx-auto bg-indigo-600/20 border-4 border-indigo-500/30 rounded-[2rem] flex items-center justify-center">
-                                    <ShieldCheck className="h-12 w-12 text-indigo-400" />
+                        <motion.div key="chooser" initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }} className="glass-card p-24 lg:p-40 space-y-20 shadow-[0_0_150px_rgba(79,70,229,0.2)] border-8 border-white/5">
+                            <div className="text-center space-y-10">
+                                <div className="h-40 w-40 mx-auto bg-indigo-600/20 border-8 border-indigo-500/30 rounded-[3rem] flex items-center justify-center">
+                                    <ShieldCheck className="h-24 w-24 text-indigo-400" />
                                 </div>
-                                <h2 className="text-5xl font-black text-white uppercase tracking-tighter">Security <span className="text-indigo-500">Node</span></h2>
-                                <p className="text-lg text-slate-400 uppercase tracking-[0.5em] font-black">Identity Confirmation Protocol</p>
+                                <h2 className="text-7xl lg:text-[10rem] font-black text-white uppercase tracking-tighter leading-none">Security <span className="text-indigo-500 font-black">Node</span></h2>
+                                <p className="text-3xl text-slate-400 uppercase tracking-[1em] font-black opacity-30">Identity Protocol 7.0</p>
                             </div>
 
-                            <div className="grid gap-8">
+                            <div className="grid gap-12">
                                 {[
                                     { m: "voice" as Method, icon: Mic, color: "indigo", label: "Voice Logic", desc: 'Vocal Signature: "Open Admin Dashboard"' },
                                     { m: "thumbsup" as Method, icon: ThumbsUp, color: "purple", label: "Bio-Gesture", desc: "Thumbs-Up Physical Verification" },
@@ -406,73 +408,73 @@ function LoginContent() {
                                     <button
                                         key={m}
                                         onClick={() => launchMethod(m)}
-                                        className={`w-full flex items-center gap-10 p-10 rounded-[2.5rem] border-4 text-left transition-all duration-500 group
-                                            bg-${color}-500/5 border-${color}-500/10 hover:bg-${color}-500/15 hover:border-${color}-500/40 hover:shadow-[0_0_50px_rgba(0,0,0,0.3)]`}
+                                        className={`w-full flex items-center gap-16 p-16 rounded-[4rem] border-[10px] text-left transition-all duration-700 group
+                                            bg-${color}-500/5 border-${color}-500/10 hover:bg-${color}-500/15 hover:border-${color}-500/50 hover:shadow-[0_0_100px_rgba(0,0,0,0.5)]`}
                                     >
-                                        <div className={`h-24 w-24 rounded-3xl bg-${color}-500/20 border-4 border-${color}-500/30 flex items-center justify-center shrink-0 group-hover:scale-110 transition-all duration-700`}>
-                                            <Icon className={`h-12 w-12 text-${color}-400`} />
+                                        <div className={`h-40 w-40 rounded-[2.5rem] bg-${color}-500/20 border-8 border-${color}-500/30 flex items-center justify-center shrink-0 group-hover:scale-110 transition-all duration-1000`}>
+                                            <Icon className={`h-20 w-20 text-${color}-400`} />
                                         </div>
-                                        <div>
-                                            <p className="text-3xl font-black text-white uppercase tracking-tight">{label}</p>
-                                            <p className="text-lg text-slate-400 mt-2 font-bold opacity-60">{desc}</p>
+                                        <div className="flex-1">
+                                            <p className="text-6xl font-black text-white uppercase tracking-tighter group-hover:text-white transition-colors">{label}</p>
+                                            <p className="text-2xl text-slate-400 mt-4 font-black opacity-40 group-hover:opacity-80 transition-all">{desc}</p>
                                         </div>
-                                        <ArrowRight className="ml-auto h-10 w-10 text-slate-700 group-hover:text-white transition-all transform group-hover:translate-x-4" />
+                                        <ArrowRight className="h-20 w-20 text-slate-800 group-hover:text-white transition-all transform group-hover:translate-x-8" strokeWidth={3} />
                                     </button>
                                 ))}
                             </div>
 
-                            <Button onClick={cancel2FA} variant="outline" className="w-full h-24 border-white/10 text-slate-500 hover:bg-white/5 text-lg font-black uppercase tracking-[0.5em] rounded-[2rem]">
-                                Abort Authentication
+                            <Button onClick={cancel2FA} variant="outline" className="w-full h-40 border-8 border-white/5 text-slate-600 hover:bg-white/5 text-2xl font-black uppercase tracking-[1em] rounded-[3rem] transition-all duration-700">
+                                Abort Protocol
                             </Button>
                         </motion.div>
                     )}
 
                     {/* ── STEP 2B: Active Verification ── */}
                     {show2FA && chosenMethod && (
-                        <motion.div key="verifying" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }} className="glass-card p-16 lg:p-24 space-y-10 shadow-[0_0_100px_rgba(79,70,229,0.15)]">
+                        <motion.div key="verifying" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }} className="glass-card p-24 lg:p-40 space-y-16 shadow-[0_0_150px_rgba(79,70,229,0.2)] border-8 border-white/5">
                             {/* Back + header */}
-                            <div className="flex items-center gap-10">
-                                <button onClick={goBackToChooser} className="h-20 w-20 rounded-[1.5rem] bg-white/5 border-4 border-white/10 flex items-center justify-center hover:bg-white/10 transition-all duration-500">
-                                    <ChevronLeft className="h-10 w-10 text-slate-400" />
+                            <div className="flex items-center gap-16">
+                                <button onClick={goBackToChooser} className="h-32 w-32 rounded-[2rem] bg-white/5 border-[8px] border-white/10 flex items-center justify-center hover:bg-white/10 transition-all duration-700">
+                                    <ChevronLeft className="h-16 w-16 text-slate-400" strokeWidth={4} />
                                 </button>
                                 <div>
-                                    <h2 className="text-4xl font-black text-white uppercase tracking-tighter">
+                                    <h2 className="text-7xl lg:text-9xl font-black text-white uppercase tracking-tighter drop-shadow-2xl">
                                         {chosenMethod === "voice" && "Voice-Sync"}
                                         {chosenMethod === "thumbsup" && "Bio-Scan"}
                                         {chosenMethod === "eyes" && "Neural-Blink"}
                                     </h2>
-                                    <p className="text-sm text-slate-500 uppercase tracking-[0.5em] font-black">Active Encryption Node</p>
+                                    <p className="text-2xl text-slate-600 uppercase tracking-[1em] font-black mt-4">Active Encryption Node</p>
                                 </div>
                             </div>
 
                             {/* Instruction banner */}
-                            <div className="bg-white/5 border-4 border-white/10 rounded-[2.5rem] p-10 flex items-center gap-10">
-                                {chosenMethod === "voice" && <><Volume2 className="h-16 w-16 text-indigo-400 shrink-0" /><div><p className="text-xl font-black text-white uppercase opacity-40">Vocal Command Required:</p><p className="text-4xl font-black text-indigo-300 tracking-tighter leading-tight">"Open Admin Dashboard"</p></div></>}
-                                {chosenMethod === "thumbsup" && <><ThumbsUp className="h-16 w-16 text-purple-400 shrink-0" /><div><p className="text-xl font-black text-white uppercase opacity-40">Gesture Signal:</p><p className="text-3xl font-black text-white tracking-tight">Show Thumbs Up 👍</p></div></>}
-                                {chosenMethod === "eyes" && <><Eye className="h-16 w-16 text-cyan-400 shrink-0" /><div><p className="text-xl font-black text-white uppercase opacity-40">Neural Trigger:</p><p className="text-3xl font-black text-white tracking-tight">Perform 3 Deliberate Blinks</p></div></>}
+                            <div className="bg-white/5 border-[10px] border-white/10 rounded-[4rem] p-16 flex items-center gap-16 shadow-inner">
+                                {chosenMethod === "voice" && <><Volume2 className="h-32 w-32 text-indigo-400 shrink-0 drop-shadow-[0_0_20px_rgba(129,140,248,0.5)]" /><div><p className="text-3xl font-black text-white uppercase opacity-20 mb-4 tracking-widest">Vocal Command Trigger:</p><p className="text-6xl lg:text-8xl font-black text-indigo-300 tracking-tighter leading-none italic">"Open Admin Dashboard"</p></div></>}
+                                {chosenMethod === "thumbsup" && <><ThumbsUp className="h-32 w-32 text-purple-400 shrink-0 drop-shadow-[0_0_20px_rgba(192,132,252,0.5)]" /><div><p className="text-3xl font-black text-white uppercase opacity-20 mb-4 tracking-widest">Bio-Gesture Requirement:</p><p className="text-6xl lg:text-8xl font-black text-white tracking-tighter leading-none italic">Show Thumbs Up 👍</p></div></>}
+                                {chosenMethod === "eyes" && <><Eye className="h-32 w-32 text-cyan-400 shrink-0 drop-shadow-[0_0_20px_rgba(34,211,238,0.5)]" /><div><p className="text-3xl font-black text-white uppercase opacity-20 mb-4 tracking-widest">Neural Reflex Signal:</p><p className="text-6xl lg:text-8xl font-black text-white tracking-tighter leading-none italic">Triple deliberate Blink</p></div></>}
                             </div>
 
                             {/* Camera feed */}
                             {needsCamera && (
-                                <div className="relative rounded-[3rem] overflow-hidden bg-black border-8 border-white/10 aspect-video shadow-4xl group">
+                                <div className="relative rounded-[5rem] overflow-hidden bg-black border-[16px] border-white/10 aspect-video shadow-[0_0_150px_rgba(0,0,0,0.8)] group group-hover:border-indigo-500/20 transition-all duration-1000">
                                     <video ref={videoRef} className="w-full h-full object-cover scale-x-[-1]" muted playsInline />
                                     {status === "loading" && (
-                                        <div className="absolute inset-0 bg-black/90 flex flex-col items-center justify-center gap-8">
-                                            <Loader2 className="h-24 w-24 text-indigo-400 animate-spin" />
-                                            <p className="text-xl text-slate-500 font-black uppercase tracking-[0.6em]">Initializing AI Subsystem...</p>
+                                        <div className="absolute inset-0 bg-black/95 flex flex-col items-center justify-center gap-16 backdrop-blur-2xl">
+                                            <Loader2 className="h-40 w-40 text-indigo-500 animate-spin" strokeWidth={4} />
+                                            <p className="text-4xl text-slate-600 font-black uppercase tracking-[1em] animate-pulse">Syncing AI Core...</p>
                                         </div>
                                     )}
                                     {status === "verified" && (
-                                        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}
-                                            className="absolute inset-0 bg-emerald-500/30 flex flex-col items-center justify-center gap-10 backdrop-blur-md">
-                                            <CheckCircle2 className="h-40 w-40 text-emerald-400 drop-shadow-[0_0_40px_rgba(52,211,153,0.8)]" />
-                                            <p className="text-white font-black text-6xl tracking-tighter uppercase leading-none">Access <span className="opacity-50">Granted</span></p>
+                                        <motion.div initial={{ opacity: 0, scale: 0.5 }} animate={{ opacity: 1, scale: 1 }}
+                                            className="absolute inset-0 bg-emerald-500/40 flex flex-col items-center justify-center gap-16 backdrop-blur-xl">
+                                            <CheckCircle2 className="h-80 w-80 text-emerald-400 drop-shadow-[0_0_100px_rgba(52,211,153,1)]" strokeWidth={3} />
+                                            <p className="text-white font-black text-9xl tracking-[0.2em] uppercase leading-none drop-shadow-2xl">GRANTED</p>
                                         </motion.div>
                                     )}
                                     {status === "scanning" && (
-                                        <div className="absolute top-10 left-10 flex items-center gap-5 bg-black/80 backdrop-blur-xl rounded-full px-8 py-4 border-2 border-white/20">
-                                            <span className="h-5 w-5 rounded-full bg-red-600 animate-pulse shadow-[0_0_20px_rgba(220,38,38,0.8)]" />
-                                            <span className="text-white text-lg font-black uppercase tracking-[0.3em]">Live Bio-Scan</span>
+                                        <div className="absolute top-20 left-20 flex items-center gap-10 bg-black/80 backdrop-blur-2xl rounded-full px-12 py-6 border-4 border-white/20 shadow-2xl">
+                                            <span className="h-8 w-8 rounded-full bg-red-600 animate-bounce shadow-[0_0_40px_rgba(220,38,38,1)]" />
+                                            <span className="text-white text-3xl font-black uppercase tracking-[0.5em]">LIVE FEED</span>
                                         </div>
                                     )}
                                 </div>
@@ -495,17 +497,17 @@ function LoginContent() {
                             )}
 
                             {/* Transcript / status display */}
-                            <div className={`min-h-[100px] p-10 rounded-[2.5rem] border-4 text-2xl font-black text-center transition-all duration-700 ${status === "verified" ? "bg-emerald-500/10 border-emerald-500/30 text-emerald-400" :
+                            <div className={`min-h-[160px] p-16 rounded-[4rem] border-[10px] text-5xl font-black text-center transition-all duration-1000 shadow-2xl flex items-center justify-center ${status === "verified" ? "bg-emerald-500/10 border-emerald-500/30 text-emerald-400" :
                                 status === "error" ? "bg-rose-500/10 border-rose-500/20 text-rose-400" :
                                     "bg-white/5 border-white/10 text-slate-100"
                                 }`}>
                                 {status === "verified" && "CRYPTO-KEY IDENTIFIED: INITIALIZING SYSTEM ACCESS"}
-                                {status === "error" && (statusMsg || "SYSTEM FAILURE: SIGNAL LOST")}
+                                {status === "error" && (statusMsg || "CRITICAL SYSTEM FAILURE")}
                                 {status === "scanning" && (statusMsg
-                                    ? <span className="italic uppercase tracking-widest text-indigo-400 drop-shadow-sm">{statusMsg}</span>
-                                    : <span className="text-slate-500 animate-pulse uppercase tracking-[0.4em]">Targeting Signal...</span>)}
-                                {status === "loading" && <span className="text-slate-600 uppercase tracking-[0.5em]">Syncing Neural Hub...</span>}
-                                {status === "idle" && <span className="text-slate-700 uppercase tracking-[0.8em]">Standby...</span>}
+                                    ? <span className="italic uppercase tracking-[0.2em] text-indigo-400 drop-shadow-2xl">{statusMsg}</span>
+                                    : <span className="text-slate-700 animate-pulse uppercase tracking-[1em] opacity-40">Awaiting Signal...</span>)}
+                                {status === "loading" && <span className="text-slate-800 uppercase tracking-[1.5em] opacity-30">Powering Rails...</span>}
+                                {status === "idle" && <span className="text-slate-900 uppercase tracking-[2em] opacity-20">Standby...</span>}
                             </div>
 
                             {/* Progress bar (camera methods) */}
@@ -523,13 +525,13 @@ function LoginContent() {
                             )}
 
                             {/* Action buttons */}
-                            <div className="flex gap-8">
-                                <Button onClick={goBackToChooser} variant="outline" className="flex-1 h-20 border-white/10 text-slate-600 hover:bg-white/5 hover:text-white font-black uppercase tracking-[0.4em] text-sm rounded-3xl">
-                                    ← RESET CORE
+                            <div className="flex gap-16">
+                                <Button onClick={goBackToChooser} variant="outline" className="flex-1 h-32 border-[8px] border-white/5 text-slate-800 hover:bg-white/5 hover:text-white font-black uppercase tracking-[1em] text-xl rounded-[2.5rem] transition-all duration-700">
+                                    ← RESET HUB
                                 </Button>
                                 {status === "error" && (
-                                    <Button onClick={() => launchMethod(chosenMethod)} className="flex-1 h-20 bg-indigo-600 hover:bg-indigo-500 text-white font-black uppercase tracking-[0.4em] text-sm rounded-3xl shadow-2xl shadow-indigo-600/30">
-                                        RETRY MANUAL
+                                    <Button onClick={() => launchMethod(chosenMethod)} className="flex-1 h-32 bg-indigo-600 hover:bg-indigo-500 text-white font-black uppercase tracking-[1em] text-xl rounded-[2.5rem] shadow-4xl shadow-indigo-600/50 transition-all duration-700">
+                                        FORCE REBOOT
                                     </Button>
                                 )}
                             </div>

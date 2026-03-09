@@ -22,47 +22,47 @@ export default function Home() {
           className="flex flex-col items-center text-center space-y-8"
         >
           <div className="space-y-4">
-            <h1 className="text-5xl md:text-6xl lg:text-8xl font-black text-white tracking-tighter uppercase leading-tight">
-              Institutional <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-blue-500">Intelligence</span>
+            <h1 className="text-8xl md:text-[10rem] lg:text-[15rem] font-black text-white tracking-tighter uppercase leading-[0.8] drop-shadow-2xl">
+              INSTITUTIONAL <br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-blue-500 to-indigo-600">INTELLIGENCE</span>
             </h1>
-            <p className="text-indigo-200/50 text-sm md:text-base font-bold uppercase tracking-[0.5em] lg:tracking-[0.8em]">Role Based Access Environment</p>
+            <p className="text-indigo-200/40 text-2xl md:text-3xl font-black uppercase tracking-[1.5em] lg:tracking-[2em]">NEURAL ROLE ACCESS GATEWAY</p>
           </div>
         </motion.div>
 
         {/* Enhanced Role Grid - Large Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 w-full px-4 lg:px-12">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 lg:gap-24 w-full px-8 lg:px-24">
           <RoleItem
             href="/login?role=admin"
-            title="ADMINISTRATIVE"
-            subtitle="Central Command & Control"
+            title="ADMIN"
+            subtitle="Central Command & Intelligence"
             icon={ShieldCheck}
-            gradient="from-indigo-600 via-indigo-800 to-slate-900"
+            gradient="from-indigo-600 via-indigo-900 to-black"
             delay={0.1}
           />
 
           <RoleItem
             href="/login?role=faculty"
-            title="INSTITUTIONAL"
+            title="FACULTY"
             subtitle="Academic Node Oversight"
             icon={Users}
-            gradient="from-slate-700 via-slate-800 to-slate-950"
+            gradient="from-slate-800 via-slate-900 to-black"
             delay={0.2}
           />
 
           <RoleItem
             href="/login?role=student"
-            title="LEARNING"
-            subtitle="Knowledge Engine Access"
+            title="STUDENT"
+            subtitle="Knowledge Engine Base"
             icon={BookOpen}
-            gradient="from-blue-600 via-indigo-900 to-slate-900"
+            gradient="from-blue-700 via-indigo-950 to-black"
             delay={0.3}
           />
         </div>
 
         {/* Footer Integrity */}
-        <div className="mt-12 lg:mt-20 flex flex-col items-center gap-4">
-          <div className="h-px w-32 bg-indigo-500/20" />
-          <p className="text-[10px] md:text-xs font-black text-indigo-300/20 uppercase tracking-[1em]">Integrated Ecosystem v4.0</p>
+        <div className="mt-24 lg:mt-40 flex flex-col items-center gap-8">
+          <div className="h-px w-64 bg-indigo-500/20" />
+          <p className="text-sm md:text-lg font-black text-indigo-300/10 uppercase tracking-[2em]">CORE ARCHITECTURE v7.0.0_CINEMATIC</p>
         </div>
       </div>
     </main>
@@ -78,7 +78,7 @@ function RoleItem({ href, title, subtitle, icon: Icon, gradient, delay }: any) {
       className="h-full"
     >
       <Link href={href} className="group relative block h-full w-full">
-        <div className="glass-card relative overflow-hidden group-hover:border-indigo-500/50 transition-all duration-500 h-full min-h-[400px] lg:min-h-[500px] flex flex-col justify-end p-6 lg:p-10 z-10">
+        <div className="glass-card relative overflow-hidden group-hover:border-indigo-500/50 transition-all duration-1000 h-full min-h-[600px] lg:min-h-[850px] flex flex-col justify-end p-12 lg:p-20 z-10 border-8 border-white/5">
 
           {/* Card Visual Background Gradient */}
           <div className={cn("absolute inset-0 bg-gradient-to-br opacity-80 group-hover:opacity-100 transition-opacity duration-700 z-0", gradient)}>
@@ -86,18 +86,18 @@ function RoleItem({ href, title, subtitle, icon: Icon, gradient, delay }: any) {
           </div>
 
           {/* Large Background Icon */}
-          <div className="absolute top-10 right-10 z-0 opacity-10 group-hover:opacity-30 group-hover:scale-110 group-hover:rotate-12 transition-all duration-700 text-white pointer-events-none">
-            <Icon size={250} strokeWidth={1} />
+          <div className="absolute top-20 right-20 z-0 opacity-10 group-hover:opacity-40 group-hover:scale-125 group-hover:rotate-[15deg] transition-all duration-[2000ms] text-white pointer-events-none">
+            <Icon size={500} strokeWidth={0.5} />
           </div>
 
           {/* Card Content */}
-          <div className="relative z-10 space-y-4">
-            <div className="h-16 w-16 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center border border-white/20 mb-8 group-hover:bg-indigo-500/80 transition-colors duration-500">
-              <Icon className="text-white h-8 w-8" />
+          <div className="relative z-10 space-y-8">
+            <div className="h-32 w-32 bg-white/10 backdrop-blur-xl rounded-[2rem] flex items-center justify-center border-4 border-white/20 mb-12 group-hover:bg-indigo-600 transition-all duration-1000 shadow-2xl">
+              <Icon className="text-white h-16 w-16" strokeWidth={2.5} />
             </div>
 
-            <h2 className="text-3xl lg:text-4xl font-black text-white tracking-tight uppercase group-hover:text-indigo-200 transition-colors leading-none">{title}</h2>
-            <p className="text-sm lg:text-base font-bold text-indigo-100/60 uppercase tracking-widest">{subtitle}</p>
+            <h2 className="text-6xl lg:text-8xl font-black text-white tracking-tighter uppercase group-hover:text-indigo-200 transition-colors leading-[0.8] group-hover:scale-105 origin-left transition-transform duration-1000">{title}</h2>
+            <p className="text-xl lg:text-2xl font-black text-indigo-100/40 uppercase tracking-[0.6em] group-hover:opacity-100 transition-all">{subtitle}</p>
 
             <div className="pt-8 flex items-center justify-between">
               <div className="h-1 w-12 bg-indigo-500 group-hover:w-32 transition-all duration-700" />
