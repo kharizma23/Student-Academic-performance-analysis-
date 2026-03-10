@@ -457,3 +457,32 @@ class DepartmentOverview(BaseModel):
     # New: Sections 8 & 9
     weekly_report: WeeklyIntelligenceReport
     comparative_analysis: List[DeptVsInstitution]
+
+# --- Predictive Analysis Schemas ---
+
+class PredictedRank(BaseModel):
+    rank: int
+    student_id: str
+    student_name: str
+    predicted_cgpa: float
+
+class PerformanceTrend(BaseModel):
+    semester: str
+    cgpa: float
+    is_predicted: bool
+
+class SubjectSkill(BaseModel):
+    subject: str
+    score: float
+
+class AcademicActivity(BaseModel):
+    category: str
+    score: float
+
+class StudentPredictionInsight(BaseModel):
+    student_id: str
+    student_name: str
+    performance_trend: List[PerformanceTrend]
+    subject_skills: List[SubjectSkill]
+    academic_activities: List[AcademicActivity]
+    rank_probability: float

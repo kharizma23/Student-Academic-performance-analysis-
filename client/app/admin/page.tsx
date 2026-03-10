@@ -413,6 +413,131 @@ function AddStaffModal({ isOpen, onClose, onSuccess }: { isOpen: boolean, onClos
     );
 }
 
+function StudentPredictionInsightPanel({ isOpen, onClose, data, loading }: { isOpen: boolean, onClose: () => void, data: any, loading: boolean }) {
+    if (!isOpen) return null;
+
+    return (
+        <Dialog 
+            isOpen={isOpen} 
+            onClose={onClose} 
+            title={loading ? "Analyzing Student DNA..." : `Prediction Insight: ${data?.student_name}`}
+            description="Advanced cognitive mapping and performance trajectory forecast."
+            className="max-w-6xl"
+        >
+            {loading ? (
+                <div className="flex flex-col items-center justify-center py-20 gap-6">
+                    <Loader2 className="h-12 w-12 animate-spin text-indigo-500" />
+                    <p className="text-sm font-bold text-slate-400 uppercase tracking-widest">Processing neural patterns...</p>
+                </div>
+            ) : data && (
+                <div className="space-y-8 py-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        {/* 1. Performance Trend Line Graph */}
+                        <Card className="bg-[#13151A] border-white/5 p-6">
+                            <h4 className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-6 flex items-center gap-3">
+                                <TrendingUp className="h-4 w-4 text-indigo-400" /> Performance Trajectory
+                            </h4>
+                            <div className="h-[250px] w-full">
+                                <ResponsiveContainer width="100%" height="100%">
+                                    <LineChart data={data.performance_trend}>
+                                        <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                                        <XAxis dataKey="semester" />
+                                        <YAxis domain={[0, 10]} />
+                                        <Tooltip 
+                                            contentStyle={{ backgroundColor: '#1C1F26', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px' }}
+                                        />
+                                        <Line 
+                                            type="monotone" 
+                                            dataKey="cgpa" 
+                                            stroke="#4361EE" 
+                                            strokeWidth={4} 
+                                            dot={{ fill: '#4361EE', strokeWidth: 2, r: 6 }}
+                                            activeDot={{ r: 8, strokeWidth: 0 }}
+                                        />
+                                    </LineChart>
+                                </ResponsiveContainer>
+                            </div>
+                        </Card>
+
+                        {/* 2. Subject Strength Radar Chart */}
+                        <Card className="bg-[#13151A] border-white/5 p-6">
+                            <h4 className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-6 flex items-center gap-3">
+                                <Target className="h-4 w-4 text-emerald-400" /> Subject Intelligence
+                            </h4>
+                            <div className="h-[250px] w-full">
+                                <ResponsiveContainer width="100%" height="100%">
+                                    <RadarChart cx="50%" cy="50%" outerRadius="80%" data={data.subject_skills}>
+                                        <PolarGrid stroke="rgba(255,255,255,0.1)" />
+                                        <PolarAngleAxis dataKey="subject" tick={{ fill: '#94a3b8', fontSize: 10 }} />
+                                        <PolarRadiusAxis angle={30} domain={[0, 100]} tick={false} />
+                                        <Radar name="Score" dataKey="score" stroke="#00F5D4" fill="#00F5D4" fillOpacity={0.5} />
+                                        <Tooltip contentStyle={{ backgroundColor: '#1C1F26', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px' }} />
+                                    </RadarChart>
+                                </ResponsiveContainer>
+                            </div>
+                        </Card>
+
+                        {/* 3. Academic Activity Bar Chart */}
+                        <Card className="bg-[#13151A] border-white/5 p-6">
+                            <h4 className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-6 flex items-center gap-3">
+                                <Activity className="h-4 w-4 text-purple-400" /> Study Behavior Analytics
+                            </h4>
+                            <div className="h-[250px] w-full">
+                                <ResponsiveContainer width="100%" height="100%">
+                                    <BarChart data={data.academic_activities}>
+                                        <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                                        <XAxis dataKey="category" />
+                                        <YAxis domain={[0, 100]} tick={{ fill: '#94a3b8', fontSize: 10 }} />
+                                        <Tooltip contentStyle={{ backgroundColor: '#1C1F26', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px' }} />
+                                        <Bar dataKey="score" fill="#9D4EDD" radius={[6, 6, 0, 0]} />
+                                    </BarChart>
+                                </ResponsiveContainer>
+                            </div>
+                        </Card>
+
+                        {/* 4. Rank Probability Gauge Chart (Simulated with Pie) */}
+                        <Card className="bg-[#13151A] border-white/5 p-6 flex flex-col items-center justify-center">
+                            <h4 className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-2 flex items-center gap-3 self-start">
+                                <Award className="h-4 w-4 text-amber-400" /> Rank Retention Probability
+                            </h4>
+                            <div className="relative h-[200px] w-full flex items-center justify-center">
+                                <ResponsiveContainer width="100%" height="100%">
+                                    <PieChart>
+                                        <Pie
+                                            data={[
+                                                { name: 'Probability', value: data.rank_probability },
+                                                { name: 'Remaining', value: 100 - data.rank_probability }
+                                            ]}
+                                            startAngle={180}
+                                            endAngle={0}
+                                            innerRadius="70%"
+                                            outerRadius="100%"
+                                            cy="85%"
+                                            paddingAngle={0}
+                                            dataKey="value"
+                                            stroke="none"
+                                        >
+                                            <Cell fill="#FEE440" />
+                                            <Cell fill="#1E293B" />
+                                        </Pie>
+                                    </PieChart>
+                                </ResponsiveContainer>
+                                <div className="absolute inset-0 flex flex-col items-center justify-center pt-24 text-center">
+                                    <span className="text-4xl font-black text-white">{data.rank_probability}%</span>
+                                    <span className="text-[10px] font-bold uppercase text-slate-500 tracking-tighter">Confidence Score</span>
+                                </div>
+                            </div>
+                            <p className="text-[11px] text-slate-500 text-center px-4 mt-2">
+                                Student has a <span className="text-amber-400 font-bold">{data.rank_probability}%</span> chance of maintaining or improving their current department rank.
+                            </p>
+                        </Card>
+                    </div>
+                </div>
+            )}
+        </Dialog>
+    );
+}
+
 export default function AdminDashboard() {
     const router = useRouter();
     const [data, setData] = useState<any>(null);
@@ -445,6 +570,51 @@ export default function AdminDashboard() {
     const [selectedMockTest, setSelectedMockTest] = useState('');
     const [assessmentStudents, setAssessmentStudents] = useState<any[]>([]);
     const [isAssessmentLoading, setIsAssessmentLoading] = useState(false);
+    const [isInsightLoading, setIsInsightLoading] = useState(false);
+
+    const [predictiveRanks, setPredictiveRanks] = useState<any[]>([]);
+    const [isGeneratingRanks, setIsGeneratingRanks] = useState(false);
+    const [selectedStudentPrediction, setSelectedStudentPrediction] = useState<any>(null);
+    const [isPredictionInsightOpen, setIsPredictionInsightOpen] = useState(false);
+
+    const fetchPredictiveRanks = async () => {
+        setIsGeneratingRanks(true);
+        try {
+            const token = localStorage.getItem('token');
+            const url = getApiUrl('/admin/predictive/ranks');
+            const res = await fetch(url, {
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+            if (res.ok) {
+                const data = await res.json();
+                setPredictiveRanks(data);
+            }
+        } catch (error) {
+            console.error("Failed to fetch predictive ranks", error);
+        } finally {
+            setIsGeneratingRanks(false);
+        }
+    };
+
+    const fetchStudentInsight = async (studentId: string) => {
+        setIsInsightLoading(true);
+        setIsPredictionInsightOpen(true);
+        try {
+            const token = localStorage.getItem('token');
+            const url = getApiUrl(`/admin/predictive/student-insight/${studentId}`);
+            const res = await fetch(url, {
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+            if (res.ok) {
+                const data = await res.json();
+                setSelectedStudentPrediction(data);
+            }
+        } catch (error) {
+            console.error("Failed to fetch student insight", error);
+        } finally {
+            setIsInsightLoading(false);
+        }
+    };
 
     useEffect(() => {
         const fetchAssessmentStudents = async () => {
@@ -680,10 +850,10 @@ export default function AdminDashboard() {
 
             <div className="flex flex-1 w-full max-w-none mx-auto relative">
                 {/* Left Sidebar Menu */}
-                <aside className="w-96 shrink-0 border-r border-white/5 bg-[#1C1F26]/30 p-6 lg:p-10 hidden md:block min-h-[85vh]">
-                    <div className="sticky top-32 h-[85vh] flex flex-col">
-                        <div className="bg-[#1C1F26] p-4 rounded-3xl border border-white/5 shadow-xl flex flex-col gap-2 w-full h-full">
-                            <div className="h-full flex flex-col gap-6">
+                <aside className="w-96 shrink-0 border-r border-white/5 bg-[#1C1F26]/30 p-6 lg:p-10 hidden md:block">
+                    <div className="sticky top-32 flex flex-col">
+                        <div className="bg-[#1C1F26] p-4 rounded-3xl border border-white/5 shadow-xl flex flex-col gap-2 w-full">
+                            <div className="flex flex-col gap-3">
                                 {[
                                     { id: 'global', label: 'Institutional', icon: Globe },
                                     { id: 'dept', label: 'Departmental', icon: LayoutGrid },
@@ -694,7 +864,7 @@ export default function AdminDashboard() {
                                         key={tab.id}
                                         onClick={() => setActiveTab(tab.id as any)}
                                         className={cn(
-                                            "flex flex-1 items-center gap-6 px-8 rounded-2xl text-xl font-bold transition-all justify-start w-full",
+                                            "flex items-center gap-5 px-6 py-5 rounded-2xl text-lg font-bold transition-all justify-start w-full",
                                             activeTab === tab.id
                                                 ? "bg-indigo-600 text-white shadow-[0_0_30px_rgba(79,70,229,0.2)]"
                                                 : "text-slate-400 hover:text-white hover:bg-white/5 bg-[#13151A]/60 border border-white/5"
@@ -1172,6 +1342,90 @@ export default function AdminDashboard() {
                                 <DepartmentalTab />
                             </div>
                         )}
+
+                        {/* --- 3. PREDICTIVE VIEW --- */}
+                        {activeTab === 'predictive' && (
+                            <div className="w-full space-y-12 lg:col-span-12">
+                                <div className="flex flex-col md:flex-row items-center justify-between gap-8 bg-[#1C1F26] p-10 rounded-3xl border border-white/5 shadow-2xl relative overflow-hidden">
+                                    <div className="absolute top-0 right-0 p-10 opacity-5">
+                                        <Zap className="h-32 w-32 text-white" />
+                                    </div>
+                                    <div className="relative z-10">
+                                        <h3 className="text-3xl font-bold text-white mb-2 uppercase tracking-tighter">Next Semester Rank Prediction</h3>
+                                        <p className="text-slate-400 font-medium text-sm">AI Engine is ready to simulate academic performance based on historical vectors.</p>
+                                    </div>
+                                    <Button 
+                                        onClick={fetchPredictiveRanks}
+                                        disabled={isGeneratingRanks}
+                                        className="relative z-10 h-16 px-10 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-2xl shadow-[0_0_20px_rgba(79,70,229,0.4)] border-none uppercase tracking-widest text-xs transition-all"
+                                    >
+                                        {isGeneratingRanks ? <RefreshCw className="h-6 w-6 animate-spin mr-3" /> : <Zap className="h-6 w-6 mr-3" />}
+                                        {isGeneratingRanks ? 'Analyzing Vectors...' : 'Generate Rank Prediction'}
+                                    </Button>
+                                </div>
+
+                                {predictiveRanks.length > 0 && (
+                                    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+                                        <Card className="neon-card overflow-hidden">
+                                            <CardHeader className="bg-white/5 border-b border-white/5 p-8">
+                                                <CardTitle className="text-xl font-bold uppercase tracking-widest flex items-center gap-4 text-white">
+                                                    <Award className="h-7 w-7 text-amber-400" />
+                                                    Predicted Rank List
+                                                </CardTitle>
+                                            </CardHeader>
+                                            <CardContent className="p-0">
+                                                <div className="overflow-x-auto">
+                                                    <table className="w-full text-left border-collapse">
+                                                        <thead className="bg-[#13151A] text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 border-b border-white/5">
+                                                            <tr>
+                                                                <th className="px-10 py-6">Rank</th>
+                                                                <th className="px-10 py-6">Student Name</th>
+                                                                <th className="px-10 py-6">Current CGPA</th>
+                                                                <th className="px-10 py-6">Predicted CGPA</th>
+                                                                <th className="px-10 py-6">Status</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody className="divide-y divide-white/5">
+                                                            {predictiveRanks.map((student) => (
+                                                                <tr key={student.student_id} className="hover:bg-indigo-500/5 transition-all group">
+                                                                    <td className="px-10 py-6">
+                                                                        <div className="h-10 w-10 rounded-xl bg-[#13151A] border border-white/10 flex items-center justify-center font-bold text-white shadow-sm">
+                                                                            #{student.rank}
+                                                                        </div>
+                                                                    </td>
+                                                                    <td className="px-10 py-6">
+                                                                        <button 
+                                                                            onClick={() => fetchStudentInsight(student.student_id)}
+                                                                            className="font-bold text-slate-300 hover:text-indigo-400 transition-colors text-left"
+                                                                        >
+                                                                            {student.student_name}
+                                                                        </button>
+                                                                    </td>
+                                                                    <td className="px-10 py-6 font-bold text-slate-500">
+                                                                        {student.current_cgpa || '8.2'} 
+                                                                    </td>
+                                                                    <td className="px-10 py-6">
+                                                                        <div className="px-4 py-2 bg-indigo-500/10 border border-indigo-500/20 rounded-lg inline-block font-black text-indigo-400">
+                                                                            {student.predicted_cgpa}
+                                                                        </div>
+                                                                    </td>
+                                                                    <td className="px-10 py-6">
+                                                                        <span className="flex items-center gap-2 text-[10px] font-bold text-emerald-400 uppercase tracking-widest">
+                                                                            <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+                                                                            Ascending Trajectory
+                                                                        </span>
+                                                                    </td>
+                                                                </tr>
+                                                            ))}
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </CardContent>
+                                        </Card>
+                                    </motion.div>
+                                )}
+                            </div>
+                        )}
                     </div> {/* Close grid container for older sections if it was left open */}
 
                     {/* User Management View */}
@@ -1355,6 +1609,12 @@ export default function AdminDashboard() {
                 isOpen={isAddStaffOpen}
                 onClose={() => setIsAddStaffOpen(false)}
                 onSuccess={() => { performSearch(); }}
+            />
+            <StudentPredictionInsightPanel
+                isOpen={isPredictionInsightOpen}
+                onClose={() => setIsPredictionInsightOpen(false)}
+                data={selectedStudentPrediction}
+                loading={isInsightLoading}
             />
         </div >
     );

@@ -64,9 +64,9 @@ export default function DepartmentalTab() {
     if (loading) return (
         <div className="flex flex-col items-center justify-center p-32 gap-8">
             <div className="relative">
-                <TrendingUp className="h-20 w-20 text-black animate-spin" />
+                <TrendingUp className="h-20 w-20 text-indigo-400 animate-spin" />
             </div>
-            <p className="text-xl font-bold text-black tracking-widest uppercase">Initializing Departmental Data...</p>
+            <p className="text-xl font-bold text-slate-200 tracking-widest uppercase">Initializing Departmental Data...</p>
         </div>
     );
 
@@ -255,7 +255,7 @@ export default function DepartmentalTab() {
                             <div className="h-12 w-12 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(245,158,11,0.2)]">
                                 <Sparkles className="h-6 w-6 text-amber-500" />
                             </div>
-                            <p className="text-sm font-medium text-slate-300 italic leading-relaxed">
+                            <p className="text-lg font-medium text-slate-200 leading-relaxed">
                                 "Subject-wise external gap is narrowing, indicating improved pedagogical alignment."
                             </p>
                         </div>
@@ -364,7 +364,7 @@ export default function DepartmentalTab() {
                                         <Lightbulb className="h-5 w-5 text-indigo-400" />
                                         <p className="text-[10px] font-bold uppercase tracking-widest text-indigo-400">AI Strategy Recommendation</p>
                                     </div>
-                                    <p className="text-sm font-medium text-indigo-100 italic">
+                                    <p className="text-lg font-medium text-indigo-100 leading-relaxed">
                                         "Increase focus on coding bootcamps for 3rd Year students to capture the upcoming hiring surge."
                                     </p>
                                 </div>
@@ -406,7 +406,7 @@ export default function DepartmentalTab() {
                                             <div className="text-white">{f.subject_comparison_score}%</div>
                                         </td>
                                         <td className="px-8 py-6">
-                                            <div className="text-slate-400 text-xs italic">"{f.feedback_summary_ai}"</div>
+                                            <div className="text-slate-200 text-lg">"{f.feedback_summary_ai}"</div>
                                         </td>
                                     </tr>
                                 ))}
@@ -430,7 +430,7 @@ export default function DepartmentalTab() {
                                 <span className="px-5 py-2 border border-indigo-500/20 bg-indigo-500/20 text-indigo-300 font-black text-[10px] uppercase tracking-[0.4em] rounded-full">Automatic Report</span>
                                 <h2 className="text-5xl font-black uppercase tracking-tighter leading-none text-white">AI Weekly Intelligence</h2>
                             </div>
-                            <p className="text-lg font-bold opacity-60 leading-relaxed italic text-indigo-200">
+                            <p className="text-xl font-semibold opacity-80 leading-relaxed text-indigo-200">
                                 Institutional decision-ready summary generated using autonomous processing.
                             </p>
                             <div className="flex flex-col gap-4 pt-10">
@@ -452,7 +452,7 @@ export default function DepartmentalTab() {
                                     </div>
                                     <h5 className="text-2xl font-black text-white uppercase tracking-tighter">Strategic Summary</h5>
                                 </div>
-                                <p className="text-xl font-medium text-slate-400 leading-relaxed">
+                                <p className="text-2xl font-semibold text-white leading-relaxed">
                                     "{data.weekly_report.summary}"
                                 </p>
                             </div>
@@ -466,7 +466,7 @@ export default function DepartmentalTab() {
                                     </div>
                                     <h5 className="text-2xl font-black text-white uppercase tracking-tighter">Recommended Action</h5>
                                 </div>
-                                <p className="text-xl font-medium text-slate-400 leading-relaxed">
+                                <p className="text-2xl font-semibold text-white leading-relaxed">
                                     "{data.weekly_report.recommendation}"
                                 </p>
                             </div>
@@ -516,13 +516,13 @@ export default function DepartmentalTab() {
                         {data.comparative_analysis.map((item: any, idx: number) => (
                             <div key={idx} className="p-6 rounded-2xl bg-[#1C1F26] border border-white/5 flex items-center justify-between group hover:border-white/10 transition-colors">
                                 <div>
-                                    <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">{item.metric}</p>
-                                    <h5 className="text-xl font-bold text-white tracking-tight mt-1">
+                                    <p className="text-base font-bold text-white uppercase tracking-widest">{item.metric}</p>
+                                    <h5 className="text-2xl font-bold tracking-tight mt-2">
                                         {item.dept_value > item.inst_value ? <span className="text-emerald-400">Outperforming</span> : <span className="text-rose-400">Lagging</span>}
                                     </h5>
                                 </div>
                                 <div className={cn(
-                                    "h-12 w-12 rounded-xl border flex items-center justify-center font-bold text-lg shadow-sm",
+                                    "h-16 w-16 rounded-xl border flex items-center justify-center font-bold text-xl shadow-sm",
                                     item.dept_value > item.inst_value ? "bg-emerald-500/10 text-emerald-400 border-emerald-500/20" : "bg-rose-500/10 text-rose-400 border-rose-500/20"
                                 )}>
                                     {Math.round(((item.dept_value - item.inst_value) / item.inst_value) * 100)}%
@@ -648,9 +648,9 @@ export default function DepartmentalTab() {
 
 function Badge({ children, color }: { children: string, color: string }) {
     const colors: any = {
-        emerald: "bg-black text-white border-black",
-        blue: "bg-zinc-900 text-white border-black",
-        rose: "bg-zinc-100 text-black border-black"
+        emerald: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
+        blue: "bg-blue-500/10 text-blue-400 border-blue-500/20",
+        rose: "bg-rose-500/10 text-rose-400 border-rose-500/20"
     };
     return (
         <span className={cn("px-4 py-1.5 rounded-none text-[10px] font-black uppercase tracking-widest border", colors[color])}>
@@ -668,29 +668,29 @@ function SegmentProgress({ label, value, total, color }: any) {
     const percent = Math.round((value / total) * 100);
     return (
         <div className="space-y-1.5">
-            <div className="flex justify-between items-center text-[9px] font-black uppercase tracking-widest text-zinc-400">
+            <div className="flex justify-between items-center text-[9px] font-black uppercase tracking-widest text-slate-300">
                 <span>{label}</span>
-                <span className="text-slate-900">{percent}%</span>
+                <span className="text-white">{percent}%</span>
             </div>
-            <div className="h-1.5 w-full bg-zinc-100 border border-black overflow-hidden">
-                <motion.div initial={{ width: 0 }} animate={{ width: `${percent}%` }} className={cn("h-full", "bg-black")} />
+            <div className="h-1.5 w-full bg-white/10 border border-white/5 overflow-hidden rounded-full">
+                <motion.div initial={{ width: 0 }} animate={{ width: `${percent}%` }} className={cn("h-full rounded-full", colors[color])} />
             </div>
         </div>
     );
 }
 
 function EligibilityBar({ label, value, icon, color, sub }: any) {
-    const colors: any = {
-        blue: "bg-black",
-        amber: "bg-black",
-        emerald: "bg-black",
-        purple: "bg-black"
+    const barColors: any = {
+        blue: "bg-blue-500",
+        amber: "bg-amber-500",
+        emerald: "bg-emerald-500",
+        purple: "bg-purple-500"
     };
     const iconColors: any = {
-        blue: "text-black bg-zinc-100 border border-black",
-        amber: "text-black bg-zinc-100 border border-black",
-        emerald: "text-black bg-zinc-100 border border-black",
-        purple: "text-black bg-zinc-100 border border-black"
+        blue: "text-blue-400 bg-blue-500/10 border border-blue-500/20",
+        amber: "text-amber-400 bg-amber-500/10 border border-amber-500/20",
+        emerald: "text-emerald-400 bg-emerald-500/10 border border-emerald-500/20",
+        purple: "text-purple-400 bg-purple-500/10 border border-purple-500/20"
     };
     return (
         <div className="space-y-3">
@@ -700,14 +700,14 @@ function EligibilityBar({ label, value, icon, color, sub }: any) {
                         {React.cloneElement(icon, { className: "h-5 w-5" })}
                     </div>
                     <div>
-                        <p className="font-black text-zinc-800 text-sm uppercase tracking-tighter">{label}</p>
-                        <p className="text-xs font-bold text-zinc-600 uppercase tracking-widest">{sub}</p>
+                        <p className="font-black text-white text-sm uppercase tracking-tighter">{label}</p>
+                        <p className="text-xs font-bold text-slate-300 uppercase tracking-widest">{sub}</p>
                     </div>
                 </div>
-                <p className="text-3xl font-black text-zinc-900 tracking-tighter">{value}%</p>
+                <p className="text-3xl font-black text-white tracking-tighter">{value}%</p>
             </div>
-            <div className="h-2.5 w-full bg-zinc-100 border border-black overflow-hidden">
-                <motion.div initial={{ width: 0 }} animate={{ width: `${value}%` }} className={cn("h-full", "bg-black")} />
+            <div className="h-2.5 w-full bg-white/10 border border-white/5 overflow-hidden rounded-full">
+                <motion.div initial={{ width: 0 }} animate={{ width: `${value}%` }} className={cn("h-full rounded-full shadow-[0_0_10px_rgba(255,255,255,0.2)]", barColors[color])} />
             </div>
         </div>
     );

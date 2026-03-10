@@ -22,7 +22,7 @@ export default function StudentLayout({
                 </div>
 
                 <div className="flex-1 overflow-auto py-10">
-                    <nav className="grid gap-2 px-6 text-[10px] font-bold uppercase tracking-widest">
+                    <nav className="grid gap-2 px-6 text-[13px] font-bold uppercase tracking-widest">
                         <NavItem href="/student" icon={LayoutDashboard} label="Dashboard" active />
                         <NavItem href="/student/academics" icon={BookOpen} label="Academics" />
                         <NavItem href="/student/analytics" icon={LineChart} label="AI Analytics" />
@@ -36,10 +36,10 @@ export default function StudentLayout({
 
                 <div className="p-4 mt-auto">
                     <div className="bg-[#13151A] p-5 rounded-2xl border border-white/5 shadow-inner">
-                        <p className="text-[10px] font-black text-slate-500 mb-3 uppercase tracking-widest">System Status</p>
+                        <p className="text-[12px] font-black text-slate-500 mb-3 uppercase tracking-widest">System Status</p>
                         <div className="flex items-center gap-4">
                             <div className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_10px_rgba(16,185,129,0.5)]" />
-                            <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Neural Engines Live</p>
+                            <p className="text-[12px] font-bold text-slate-400 uppercase tracking-wider">Neural Engines Live</p>
                         </div>
                     </div>
                 </div>
@@ -50,12 +50,12 @@ export default function StudentLayout({
                 <header className="sticky top-0 z-40 flex h-24 items-center gap-8 border-b border-white/5 bg-[#0D0E12]/80 backdrop-blur-xl px-4 sm:px-12">
                     <div className="flex-1 flex items-center justify-between gap-8">
                         <div className="flex items-center gap-8">
-                            <h2 className="text-sm font-bold text-slate-500 uppercase tracking-widest hidden md:block">
+                            <h2 className="text-base font-bold text-slate-500 uppercase tracking-widest hidden md:block">
                                 Academic Cycle <span className="text-white ml-2">2023-24</span>
                             </h2>
                         </div>
                         <div className="flex items-center gap-8">
-                            <div className="hidden sm:flex h-11 items-center px-6 rounded-xl border border-white/5 bg-[#13151A] text-[10px] font-black uppercase tracking-widest text-indigo-400">
+                            <div className="hidden sm:flex h-11 items-center px-6 rounded-xl border border-white/5 bg-[#13151A] text-[13px] font-black uppercase tracking-widest text-indigo-400">
                                 Student Node <span className="text-white ml-3">2024001</span>
                             </div>
                             <div className="h-12 w-12 bg-indigo-600/10 border border-indigo-500/20 rounded-xl flex items-center justify-center text-indigo-400 shadow-lg">
@@ -86,7 +86,7 @@ function NavItem({ href, icon: Icon, label, active, className }: { href: string,
             )}
         >
             <Icon className={cn("h-5 w-5", active ? "text-indigo-400" : "text-slate-500 group-hover:text-indigo-400 transition-colors")} />
-            <span className="font-bold text-xs">{label}</span>
+            <span className="font-bold text-sm">{label}</span>
         </Link>
     )
 }

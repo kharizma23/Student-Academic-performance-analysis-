@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import { Inter as FontSans } from "next/font/google"; // Using Inter for a professional, clean sans-serif look globally
+import { Inter } from "next/font/google";
 import { cn } from "@/lib/utils";
 import "./globals.css";
 import { GlobalWidget } from "@/components/global-widget";
 
-const fontSans = FontSans({
+const fontSans = Inter({
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
   variable: "--font-sans",
 });
 
