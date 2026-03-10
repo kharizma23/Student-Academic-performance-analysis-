@@ -930,7 +930,7 @@ def get_predicted_ranks(
     for i, r in enumerate(ranks):
         r["rank"] = i + 1
         
-    return ranks
+    return ranks[:20]
 
 @router.get("/predictive/student-insight/{student_id}", response_model=schemas.StudentPredictionInsight)
 def get_student_prediction_insight(student_id: str, db: Session = Depends(database.get_db), current_user: models.User = Depends(auth.get_current_active_user)):

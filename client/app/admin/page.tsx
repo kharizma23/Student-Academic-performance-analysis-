@@ -909,7 +909,7 @@ export default function AdminDashboard() {
                     </div>
 
                     {/* 1. INSTITUTIONAL SUMMARY CARDS (Animated) */}
-                    {(activeTab === 'global' || activeTab === 'predictive') && (
+                    {(activeTab === 'global') && (
                         <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
                             {[
                                 { label: "Total Students", value: data.institutional.total_students, icon: Users, accent: "text-[#4361EE]", bg: "bg-[#4361EE]/10", border: "border-[#4361EE]/20" },
@@ -952,7 +952,7 @@ export default function AdminDashboard() {
                     <div className="grid gap-12 grid-cols-1 lg:grid-cols-12">
 
                         {/* 10. AI INSIGHT GENERATOR (AUTO SUMMARY) */}
-                        {activeTab !== 'dept' && (
+                        {(activeTab === 'global') && (
                             <div className="lg:col-span-12">
                                 <Card className="neon-card relative overflow-hidden group">
                                     <CardContent className="p-8 lg:p-12 relative z-10 flex flex-col md:flex-row items-center gap-10 lg:gap-16">
@@ -987,7 +987,7 @@ export default function AdminDashboard() {
                         )}
 
                         {/* 2. AI EARLY WARNING SYSTEM & 3. PERFORMANCE CLUSTERING */}
-                        {(activeTab === 'global' || activeTab === 'predictive') && (
+                        {(activeTab === 'global') && (
                             <>
                                 <div className="lg:col-span-4 flex flex-col gap-8">
                                     <Card className="neon-card h-full flex flex-col">
@@ -1168,7 +1168,7 @@ export default function AdminDashboard() {
                         )}
 
                         {/* 5. PREDICTIVE PLACEMENT FORECAST & 6. FACULTY IMPACT */}
-                        {(activeTab === 'global' || activeTab === 'predictive') && (
+                        {(activeTab === 'global') && (
                             <>
                                 <div className="lg:col-span-6">
                                     <Card className="neon-card h-full">
@@ -1374,11 +1374,21 @@ export default function AdminDashboard() {
                                                     className="w-full sm:w-48 bg-[#13151A] border border-white/10 rounded-xl px-4 py-3 text-sm font-semibold text-white focus:ring-2 focus:ring-indigo-500/50 outline-none transition-all"
                                                 >
                                                     <option value="ALL">Global Engine (All)</option>
-                                                    <option value="CSE">Cognitive Systems (CSE)</option>
-                                                    <option value="AIML">Neural Nets (AIML)</option>
-                                                    <option value="ECE">Quantum Comms (ECE)</option>
-                                                    <option value="MECH">Kinetics (MECH)</option>
-                                                    <option value="EEE">Energy Grid (EEE)</option>
+                                                    <option value="AIML">AIML</option>
+                                                    <option value="AGRI">AGRI</option>
+                                                    <option value="EEE">EEE</option>
+                                                    <option value="EIE">EIE</option>
+                                                    <option value="ECE">ECE</option>
+                                                    <option value="BT">BT</option>
+                                                    <option value="BME">BME</option>
+                                                    <option value="CIVIL">CIVIL</option>
+                                                    <option value="IT">IT</option>
+                                                    <option value="MECH">MECH</option>
+                                                    <option value="MECHATRONICS">MECHATRONICS</option>
+                                                    <option value="CSE">CSE</option>
+                                                    <option value="FT">FT</option>
+                                                    <option value="FD">FD</option>
+                                                    <option value="AIDS">AIDS</option>
                                                 </select>
                                             </div>
                                             <div className="space-y-1.5 w-full sm:w-auto">
