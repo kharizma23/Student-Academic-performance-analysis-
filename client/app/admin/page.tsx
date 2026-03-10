@@ -577,11 +577,22 @@ export default function AdminDashboard() {
     const [selectedStudentPrediction, setSelectedStudentPrediction] = useState<any>(null);
     const [isPredictionInsightOpen, setIsPredictionInsightOpen] = useState(false);
 
+    const [predictiveYearFilter, setPredictiveYearFilter] = useState('ALL');
+    const [predictiveDeptFilter, setPredictiveDeptFilter] = useState('ALL');
+
     const fetchPredictiveRanks = async () => {
         setIsGeneratingRanks(true);
         try {
             const token = localStorage.getItem('token');
-            const url = getApiUrl('/admin/predictive/ranks');
+            let url = getApiUrl('/admin/predictive/ranks');
+            const params = new URLSearchParams();
+            if (predictiveYearFilter !== 'ALL') params.append('year', predictiveYearFilter);
+            if (predictiveDeptFilter !== 'ALL') params.append('department', predictiveDeptFilter);
+            
+            if (params.toString()) {
+                url += `?${params.toString()}`;
+            }
+
             const res = await fetch(url, {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
@@ -1350,14 +1361,46 @@ export default function AdminDashboard() {
                                     <div className="absolute top-0 right-0 p-10 opacity-5">
                                         <Zap className="h-32 w-32 text-white" />
                                     </div>
-                                    <div className="relative z-10">
+                                    <div className="relative z-10 w-full md:w-auto flex-1">
                                         <h3 className="text-3xl font-bold text-white mb-2 uppercase tracking-tighter">Next Semester Rank Prediction</h3>
                                         <p className="text-slate-400 font-medium text-sm">AI Engine is ready to simulate academic performance based on historical vectors.</p>
+                                        
+                                        <div className="flex flex-wrap gap-4 mt-6">
+                                            <div className="space-y-1.5 w-full sm:w-auto">
+                                                <label className="text-[10px] uppercase tracking-widest text-slate-500 font-bold ml-1">Department View</label>
+                                                <select 
+                                                    value={predictiveDeptFilter}
+                                                    onChange={(e) => setPredictiveDeptFilter(e.target.value)}
+                                                    className="w-full sm:w-48 bg-[#13151A] border border-white/10 rounded-xl px-4 py-3 text-sm font-semibold text-white focus:ring-2 focus:ring-indigo-500/50 outline-none transition-all"
+                                                >
+                                                    <option value="ALL">Global Engine (All)</option>
+                                                    <option value="CSE">Cognitive Systems (CSE)</option>
+                                                    <option value="AIML">Neural Nets (AIML)</option>
+                                                    <option value="ECE">Quantum Comms (ECE)</option>
+                                                    <option value="MECH">Kinetics (MECH)</option>
+                                                    <option value="EEE">Energy Grid (EEE)</option>
+                                                </select>
+                                            </div>
+                                            <div className="space-y-1.5 w-full sm:w-auto">
+                                                <label className="text-[10px] uppercase tracking-widest text-slate-500 font-bold ml-1">Academic Year</label>
+                                                <select 
+                                                    value={predictiveYearFilter}
+                                                    onChange={(e) => setPredictiveYearFilter(e.target.value)}
+                                                    className="w-full sm:w-40 bg-[#13151A] border border-white/10 rounded-xl px-4 py-3 text-sm font-semibold text-white focus:ring-2 focus:ring-indigo-500/50 outline-none transition-all"
+                                                >
+                                                    <option value="ALL">All Cohorts</option>
+                                                    <option value="1">Alpha (Year 1)</option>
+                                                    <option value="2">Beta (Year 2)</option>
+                                                    <option value="3">Gamma (Year 3)</option>
+                                                    <option value="4">Delta (Year 4)</option>
+                                                </select>
+                                            </div>
+                                        </div>
                                     </div>
                                     <Button 
                                         onClick={fetchPredictiveRanks}
                                         disabled={isGeneratingRanks}
-                                        className="relative z-10 h-16 px-10 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-2xl shadow-[0_0_20px_rgba(79,70,229,0.4)] border-none uppercase tracking-widest text-xs transition-all"
+                                        className="relative z-10 h-16 px-10 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-2xl shadow-[0_0_20px_rgba(79,70,229,0.4)] border-none uppercase tracking-widest text-xs transition-all w-full md:w-auto mt-6 md:mt-0"
                                     >
                                         {isGeneratingRanks ? <RefreshCw className="h-6 w-6 animate-spin mr-3" /> : <Zap className="h-6 w-6 mr-3" />}
                                         {isGeneratingRanks ? 'Analyzing Vectors...' : 'Generate Rank Prediction'}

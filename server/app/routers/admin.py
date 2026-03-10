@@ -890,11 +890,22 @@ def _generate_empty_dept_overview(department: str):
     )
 
 @router.get("/predictive/ranks", response_model=List[schemas.PredictedRank])
-def get_predicted_ranks(db: Session = Depends(database.get_db), current_user: models.User = Depends(auth.get_current_active_user)):
+def get_predicted_ranks(
+    year: Optional[int] = Query(None, description="Filter by year"),
+    department: Optional[str] = Query(None, description="Filter by department"),
+    db: Session = Depends(database.get_db), 
+    current_user: models.User = Depends(auth.get_current_active_user)
+):
     if current_user.role != models.UserRole.ADMIN:
         raise HTTPException(status_code=403, detail="Unauthorized")
     
-    students = db.query(models.Student).all()
+    query = db.query(models.Student)
+    if year is not None:
+        query = query.filter(models.Student.year == year)
+    if department is not None and department != "ALL":
+        query = query.filter(models.Student.department == department)
+        
+    students = query.all()
     if not students:
         return []
     
